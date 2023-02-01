@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Library</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script copy.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="title">Book Library</div>
+    </header>
+    <main>
+      <div class="buttons">
+        <button id="modal-btn">Add Book</button>
+      </div>
+      <div class="books"></div>
+    </main>
+    <div id="modal" class="modal">
+      <form id="form" class="form-modal">
+        <span id="close" class="close">&times;</span>
+        <h1>Book Info</h1>
+        <div class="form-container">
+          <div class="form-title">
+            <input
+              id="title"
+              type="text"
+              placeholder="title"
+              name="title"
+              required
+            />
+          </div>
+          <div class="form-author">
+            <input
+              id="author"
+              type="text"
+              placeholder="author"
+              name="author"
+              required
+            />
+          </div>
+          <div class="form-pages">
+            <input
+              id="pages"
+              type="number"
+              placeholder="pages"
+              name="pages"
+              required
+            />
+          </div>
+          <div class="form-read">
+            <span>did you read this book ?</span>
+            <input id="read" type="checkbox" name="read" />
+          </div>
+          <button id="submit" type="submit" class="submit-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<!--     <div class="books">
+      <div class="book">
+        <div class="be read"></div>
+        <div class="be title">title</div>
+        <div class="be author">by author</div>
+        <div class="be pages">255</div>
+      </div>
+      <div class="book">
+        <div class="be read"></div>
+        <div class="be title">title</div>
+        <div class="be author">by author</div>
+        <div class="be pages">255</div>
+      </div>
+      <div class="book">
+        <div class="be read"></div>
+        <div class="be title">title</div>
+        <div class="be author">by author</div>
+        <div class="be pages">255</div>
+      </div> -->
