@@ -75,7 +75,11 @@ function displayBooks() {
   const library = booksTest;
   library.forEach((book) => addBookInfo(book));
 }
-
+function clearFields() {
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
+  document.querySelector('#pages').value = '';
+}
 /* display books on page */
 document.addEventListener('DOMContentLoaded', displayBooks());
 /* add  a book */
@@ -90,6 +94,7 @@ form.addEventListener('submit', (e) => {
   const read = document.querySelector('#read').value;
   // new book
   const book = new Book(title, author, pages, read);
-  console.log(book);
   addBookInfo(book);
+  // clear fields
+  clearFields();
 });
