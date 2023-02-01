@@ -103,10 +103,13 @@ main {
   border-radius: 5px;
 }
 
+/* cards */
+
 .books {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  padding: 2rem;
 }
 .book {
   height: 250px;
@@ -114,11 +117,26 @@ main {
   border: 1px red solid;
   background-color: #ecfeff;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 2fr 1fr 1fr;
   justify-items: end;
+  padding: 0.8rem;
 }
 
+.del-btn {
+  justify-self: start;
+  align-self: start;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.del-btn:hover,
+.del-btn:focus {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  cursor: pointer;
+  transform: scale(1.2);
+}
 .read {
   height: 20px;
   width: 30px;
@@ -131,4 +149,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.title,
+.author,
+.pages {
+  grid-column: 1 / 3;
 }

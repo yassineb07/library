@@ -1,4 +1,4 @@
-/* modal */
+// modal
 const modal = document.getElementById('modal');
 const modalBtn = document.getElementById('modal-btn');
 const close = document.getElementById('close');
@@ -15,7 +15,7 @@ window.addEventListener('click', (event) => {
     modal.style.display = 'none';
   }
 });
-/*       */
+
 const booksTest = [
   {
     title: 'dark knight',
@@ -52,17 +52,21 @@ function addBookInfo(bookEl) {
   const title = document.createElement('div');
   const author = document.createElement('div');
   const pages = document.createElement('div');
+  const delBtn = document.createElement('div');
 
   book.classList.add('book');
   read.classList.add('read');
   title.classList.add('title');
   author.classList.add('author');
   pages.classList.add('pages');
+  delBtn.classList.add('del-btn');
 
+  delBtn.innerHTML = '&times;';
   title.textContent = bookEl.title;
   author.textContent = bookEl.author;
   pages.textContent = bookEl.pages;
 
+  book.appendChild(delBtn);
   book.appendChild(read);
   book.appendChild(title);
   book.appendChild(author);
@@ -80,9 +84,17 @@ function clearFields() {
   document.querySelector('#author').value = '';
   document.querySelector('#pages').value = '';
 }
-/* display books on page */
+
+function deleteBook(target) {
+  if (target.classList.contains('del-btn')) {
+    target.parentElement.remove();
+  }
+}
+
+// display books on page
 document.addEventListener('DOMContentLoaded', displayBooks());
-/* add  a book */
+
+// add  a book
 const form = document.querySelector('#form');
 form.addEventListener('submit', (e) => {
   // prevent submit
@@ -97,4 +109,10 @@ form.addEventListener('submit', (e) => {
   addBookInfo(book);
   // clear fields
   clearFields();
+});
+
+// remove book
+document.querySelector('.books').addEventListener('click', (e) => {
+  console.log(e.target);
+  deleteBook(e.target);
 });
