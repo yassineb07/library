@@ -1,6 +1,6 @@
 // modal
 const modal = document.getElementById('modal');
-const modalBtn = document.getElementById('modal-btn');
+const modalBtn = document.getElementById('open-modal-btn');
 const close = document.getElementById('close');
 
 modalBtn.addEventListener('click', () => {
@@ -15,104 +15,79 @@ window.addEventListener('click', (event) => {
     modal.style.display = 'none';
   }
 });
+// modal
 
-const booksTest = [
-  {
-    title: 'dark knight',
-    author: 'batman',
-    pages: 255,
-    read: true,
-  },
-  {
-    title: 'man of steel',
-    author: 'superman',
-    pages: 150,
-    read: true,
-  },
-  {
-    title: 'thor',
-    author: 'odinson',
-    pages: 74,
-    read: false,
-  },
-];
+const library = [];
 
-function Book(title, author, pages, read = false) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
 }
 
-function addBookInfo(bookEl) {
-  const books = document.querySelector('.books');
-
-  const book = document.createElement('div');
-  const read = document.createElement('div');
-  const title = document.createElement('div');
-  const author = document.createElement('div');
-  const pages = document.createElement('div');
-  const delBtn = document.createElement('div');
-
-  book.classList.add('book');
-  read.classList.add('read');
-  title.classList.add('title');
-  author.classList.add('author');
-  pages.classList.add('pages');
-  delBtn.classList.add('del-btn');
-
-  delBtn.innerHTML = '&times;';
-  title.textContent = bookEl.title;
-  author.textContent = bookEl.author;
-  pages.textContent = bookEl.pages;
-
-  book.appendChild(delBtn);
-  book.appendChild(read);
-  book.appendChild(title);
-  book.appendChild(author);
-  book.appendChild(pages);
-
-  books.appendChild(book);
-}
-
-function displayBooks() {
-  const library = booksTest;
-  library.forEach((book) => addBookInfo(book));
-}
-function clearFields() {
-  document.querySelector('#title').value = '';
-  document.querySelector('#author').value = '';
-  document.querySelector('#pages').value = '';
-}
-
-function deleteBook(target) {
-  if (target.classList.contains('del-btn')) {
-    target.parentElement.remove();
-  }
-}
-
-// display books on page
-document.addEventListener('DOMContentLoaded', displayBooks());
-
-// add  a book
-const form = document.querySelector('#form');
-form.addEventListener('submit', (e) => {
-  // prevent submit
-  e.preventDefault();
-  // get form values
+function getUserInput() {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
-  const read = document.querySelector('#read').value;
-  // new book
-  const book = new Book(title, author, pages, read);
-  addBookInfo(book);
-  // clear fields
-  clearFields();
+  const read = document.querySelector('#read').checked;
+  return new Book(title, author, pages, read);
+}
+
+function addBookToLibrary(book) {
+  library.push(book);
+}
+
+function createBookCard(bookObj) {
+  const books = document.querySelector('.books');
+  const book = document.createElement('div');
+  const title = document.createElement('div');
+  const author = document.createElement('div');
+  const pages = document.createElement('div');
+  const status = document.createElement('input');
+
+  book.classList.add('book');
+  title.classList.add('title');
+  author.classList.add('author');
+  pages.classList.add('pages');
+  status.classList.add('status');
+  status.setAttribute('type', 'checkbox');
+
+  title.textContent = bookObj.title;
+  author.textContent = bookObj.author;
+  pages.textContent = bookObj.pages;
+
+  if (bookObj.read) {
+    book.classList.add('on');
+  }
+
+  book.appendChild(status);
+  book.appendChild(title);
+  book.appendChild(author);
+  book.appendChild(pages);
+  books.appendChild(book);
+}
+
+function updateDisplay() {
+  if (document.querySelector('.books').firstChild) {
+    document.querySelector('.books').replaceChildren();
+  }
+  library.forEach((book) => {
+    createBookCard(book);
+  });
+}
+
+// Add book
+document.querySelector('#submit').addEventListener('click', (e) => {
+  console.log(e.target);
+  e.preventDefault();
+  const book = getUserInput();
+  console.log(book);
+  addBookToLibrary(book);
+  console.log(library);
+  updateDisplay();
 });
 
-// remove book
-document.querySelector('.books').addEventListener('click', (e) => {
-  console.log(e.target);
-  deleteBook(e.target);
-});
+// delete book
+
+// change book read status

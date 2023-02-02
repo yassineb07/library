@@ -14,16 +14,16 @@
     </header>
     <main>
       <div class="buttons">
-        <button id="modal-btn">Add Book</button>
+        <button id="open-modal-btn">Add Book</button>
       </div>
       <div class="books"></div>
     </main>
     <div id="modal" class="modal">
-      <form id="form" class="form-modal">
+      <form id="form" class="modal-form">
         <span id="close" class="close">&times;</span>
         <h1>Book Info</h1>
         <div class="form-container">
-          <div class="form-title">
+          <div class="form-row">
             <input
               id="title"
               type="text"
@@ -32,7 +32,7 @@
               required
             />
           </div>
-          <div class="form-author">
+          <div class="form-row">
             <input
               id="author"
               type="text"
@@ -41,7 +41,7 @@
               required
             />
           </div>
-          <div class="form-pages">
+          <div class="form-row">
             <input
               id="pages"
               type="number"
@@ -50,7 +50,7 @@
               required
             />
           </div>
-          <div class="form-read">
+          <div class="form-row">
             <span>did you read this book ?</span>
             <input id="read" type="checkbox" name="read" />
           </div>
