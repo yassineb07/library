@@ -38,29 +38,37 @@ function addBookToLibrary(book) {
   library.push(book);
 }
 
-function createBookCard(bookObj) {
+function removeBookFromLibrary(index) {
+  library.splice(+index, 1);
+}
+
+function createBookCard(bookObj, index) {
   const books = document.querySelector('.books');
   const book = document.createElement('div');
   const title = document.createElement('div');
   const author = document.createElement('div');
   const pages = document.createElement('div');
   const status = document.createElement('input');
+  const remove = document.createElement('div');
 
   book.classList.add('book');
+  book.setAttribute('data-index', `${index}`);
   title.classList.add('title');
   author.classList.add('author');
   pages.classList.add('pages');
   status.classList.add('status');
   status.setAttribute('type', 'checkbox');
+  remove.classList.add('delete-btn');
 
   title.textContent = bookObj.title;
   author.textContent = bookObj.author;
   pages.textContent = bookObj.pages;
+  remove.innerHTML = '&times;';
 
   if (bookObj.read) {
     book.classList.add('on');
   }
-
+  book.appendChild(remove);
   book.appendChild(status);
   book.appendChild(title);
   book.appendChild(author);
@@ -73,21 +81,29 @@ function updateDisplay() {
     document.querySelector('.books').replaceChildren();
   }
   library.forEach((book) => {
-    createBookCard(book);
+    createBookCard(book, library.indexOf(book));
   });
+}
+
+function deleteBook(target) {
+  if (target.classList.contains('delete-btn')) {
+    removeBookFromLibrary(target.parentElement.getAttribute('data-index'));
+  }
 }
 
 // Add book
 document.querySelector('#submit').addEventListener('click', (e) => {
-  console.log(e.target);
   e.preventDefault();
   const book = getUserInput();
-  console.log(book);
   addBookToLibrary(book);
-  console.log(library);
   updateDisplay();
 });
 
 // delete book
+document.querySelector('.books').addEventListener('click', (e) => {
+  console.log(e.target);
+  deleteBook(e.target);
+  updateDisplay();
+});
 
 // change book read status
