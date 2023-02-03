@@ -85,6 +85,13 @@ function updateDisplay() {
   });
 }
 
+function clearFields() {
+  document.querySelector('#title').value = '';
+  document.querySelector('#author').value = '';
+  document.querySelector('#pages').value = '';
+  document.querySelector('#read').checked = false;
+}
+
 function deleteBook(target) {
   if (target.classList.contains('delete-btn')) {
     removeBookFromLibrary(target.parentElement.getAttribute('data-index'));
@@ -97,6 +104,7 @@ document.querySelector('#submit').addEventListener('click', (e) => {
   const book = getUserInput();
   addBookToLibrary(book);
   updateDisplay();
+  clearFields();
 });
 
 // delete book
