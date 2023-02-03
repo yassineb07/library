@@ -26,6 +26,14 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.switchStatus = function () {
+  if (this.read) {
+    this.read = false;
+  } else {
+    this.read = true;
+  }
+};
+
 function getUserInput() {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
@@ -48,7 +56,7 @@ function createBookCard(bookObj, index) {
   const title = document.createElement('div');
   const author = document.createElement('div');
   const pages = document.createElement('div');
-  const status = document.createElement('input');
+  const status = document.createElement('button');
   const remove = document.createElement('div');
 
   book.classList.add('book');
@@ -56,7 +64,7 @@ function createBookCard(bookObj, index) {
   title.classList.add('title');
   author.classList.add('author');
   pages.classList.add('pages');
-  status.classList.add('status');
+  status.classList.add('status-btn');
   status.setAttribute('type', 'checkbox');
   remove.classList.add('delete-btn');
 
@@ -98,6 +106,13 @@ function deleteBook(target) {
   }
 }
 
+function changeStatus(target) {
+  if (target.classList.contains('status-btn')) {
+    const index = target.parentElement.getAttribute('data-index');
+    library[+index].switchStatus();
+  }
+}
+
 // Add book
 document.querySelector('#submit').addEventListener('click', (e) => {
   e.preventDefault();
@@ -109,9 +124,12 @@ document.querySelector('#submit').addEventListener('click', (e) => {
 
 // delete book
 document.querySelector('.books').addEventListener('click', (e) => {
-  console.log(e.target);
   deleteBook(e.target);
   updateDisplay();
 });
 
 // change book read status
+document.querySelector('.books').addEventListener('click', (e) => {
+  changeStatus(e.target);
+  updateDisplay();
+});
