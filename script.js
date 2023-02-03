@@ -65,22 +65,24 @@ function createBookCard(bookObj, index) {
   author.classList.add('author');
   pages.classList.add('pages');
   status.classList.add('status-btn');
-  status.setAttribute('type', 'checkbox');
   remove.classList.add('delete-btn');
 
   title.textContent = bookObj.title;
   author.textContent = bookObj.author;
   pages.textContent = bookObj.pages;
   remove.innerHTML = '&times;';
+  status.textContent = 'Not Read';
 
   if (bookObj.read) {
     book.classList.add('on');
+    status.classList.add('green');
+    status.textContent = 'Read';
   }
   book.appendChild(remove);
-  book.appendChild(status);
   book.appendChild(title);
   book.appendChild(author);
   book.appendChild(pages);
+  book.appendChild(status);
   books.appendChild(book);
 }
 
