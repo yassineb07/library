@@ -15,7 +15,6 @@ window.addEventListener('click', (event) => {
     modal.style.display = 'none';
   }
 });
-// modal
 
 const library = [];
 
@@ -116,7 +115,7 @@ function changeStatus(target) {
 }
 
 // Add book
-document.querySelector('#submit').addEventListener('click', (e) => {
+document.querySelector('#form').addEventListener('submit', (e) => {
   e.preventDefault();
   const book = getUserInput();
   addBookToLibrary(book);

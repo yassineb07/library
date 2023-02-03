@@ -13,24 +13,21 @@ body {
   display: flex;
   flex-direction: column;
 }
-body,
-header,
-main {
-  border: 1px solid black;
-}
+
 header {
   height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #d1fae5;
-  background-color: #10b981;
+  color: #ffffff;
+  background-color: #15803d;
   font-size: 3rem;
   font-weight: 700;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 main {
   flex: 1;
-  background-color: #d1fae5;
+  background-color: #fafafa;
 }
 
 .buttons {
@@ -40,10 +37,19 @@ main {
   align-items: center;
 }
 .buttons button {
-  color: #6ee7b7;
-  background-color: aliceblue;
+  color: #14532d;
+  font-family: 'poppins', sans-serif;
   font-size: 1.5rem;
+  font-weight: 900;
   padding: 1rem 2rem;
+  border: 3px solid #15803d;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.buttons button:hover {
+  background-color: #34d399;
+  transition: all 0.5s;
 }
 
 /* styling modal */
@@ -131,13 +137,17 @@ main {
   height: 250px;
   width: 200px;
   background-color: #ecfeff;
-  background-image: linear-gradient(to bottom right, #ea580c, #bdddd6);
+  background-image: linear-gradient(to bottom right, #ea580c, #ffedd5);
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 2fr 1fr 1fr;
   justify-items: end;
   padding: 0.8rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.on {
+  background-image: linear-gradient(to bottom right, #34d399, #d1fae5);
 }
 
 /* delete button */
@@ -175,9 +185,7 @@ main {
 .status-btn:hover {
   cursor: pointer;
 }
-.on {
-  background-image: linear-gradient(to bottom right, #34d399, #bdddd6);
-}
+
 .green {
   background-color: #e6f5ec;
   border: #1e8449 solid 2px;
