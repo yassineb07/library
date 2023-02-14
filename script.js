@@ -18,21 +18,22 @@ window.addEventListener('click', (event) => {
 
 const library = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-Book.prototype.switchStatus = function () {
-  if (this.read) {
-    this.read = false;
-  } else {
-    this.read = true;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
   }
-};
 
+  switchStatus() {
+    if (this.read) {
+      this.read = false;
+    } else {
+      this.read = true;
+    }
+  }
+}
 function getUserInput() {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
