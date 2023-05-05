@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Library</title>
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <script src="./main.js" defer></script>
+  </head>
+  <body class="min-h-screen">
+    <header class="bg-teal-700 flex justify-center items-center py-5">
+      <div class="title text-5xl font-black text-white">Book Library</div>
+    </header>
+    <main class="border-2 border-red-700 h-full">
+      <div class="buttons">
+        <button id="open-modal-btn">Add Book</button>
+      </div>
+      <div class="books"></div>
+    </main>
+    <div
+      id="modal"
+      class="modal fixed h-full w-full top-0 right-0 z-30 bg-black bg-opacity-40"
+    >
+      <form
+        id="form"
+        class="modal-form relative w-fit px-4 py-2 border-2 shadow-lg mt-60 mx-auto text-xl bg-gray-100"
+      >
+        <span id="close" class="close float-right text-4xl hover:cursor-pointer"
+          >&times;</span
+        >
+        <h1 class="text-3xl font-bold mb-3">Book Info</h1>
+        <div class="form-container flex flex-col space-y-2">
+          <div class="form-row">
+            <input
+              class="px-2 py-2 border-2"
+              id="title"
+              type="text"
+              placeholder="Title"
+              name="title"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <input
+              class="px-2 py-2 border-2"
+              id="author"
+              type="text"
+              placeholder="Author"
+              name="author"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <input
+              class="px-2 py-2 border-2"
+              id="pages"
+              type="number"
+              placeholder="Pages"
+              name="pages"
+              required
+            />
+          </div>
+          <div class="form-row flex space-x-4">
+            <span>did you read this book ?</span>
+            <input class="w-5" id="read" type="checkbox" name="read" />
+          </div>
+          <button
+            id="submit"
+            type="submit"
+            class="submit-btn px-4 py-2 rounded-lg self-center bg-teal-800 text-white hover:bg-teal-600"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
