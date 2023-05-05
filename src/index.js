@@ -1,3 +1,5 @@
+import './style.css';
+
 // modal
 const modal = document.getElementById('modal');
 const modalBtn = document.getElementById('open-modal-btn');
