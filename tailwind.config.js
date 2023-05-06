@@ -3,7 +3,12 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   content: ['./dist/*.html'],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        autoFill: 'repeat(auto-fill, minmax(15rem, 1fr))',
+        autoFit: 'repeat(auto-fit, minmax(15rem, 1fr))',
+      },
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
