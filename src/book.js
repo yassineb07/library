@@ -33,6 +33,7 @@ function changeStatus(bookObj) {
   } else {
     bookObj.read = true;
   }
+  saveBookList(bookList);
 }
 
 // add book
