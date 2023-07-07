@@ -42,32 +42,35 @@
         <div class="form-container flex flex-col space-y-2">
           <div class="form-row">
             <input
-              class="px-2 py-2 border-2"
+              class="px-2 py-2 border-2 focus:outline-none"
               id="title"
               type="text"
-              placeholder="Title"
+              placeholder="Title *"
               name="title"
               required
+              maxlength="20"
             />
           </div>
           <div class="form-row">
             <input
-              class="px-2 py-2 border-2"
+              class="px-2 py-2 border-2 focus:outline-none"
               id="author"
               type="text"
-              placeholder="Author"
+              placeholder="Author *"
               name="author"
               required
+              maxlength="15"
             />
           </div>
           <div class="form-row">
             <input
-              class="px-2 py-2 border-2"
+              class="px-2 py-2 border-2 focus:outline-none"
               id="pages"
               type="number"
-              placeholder="Pages"
+              placeholder="Pages *"
               name="pages"
               required
+              min="1"
             />
           </div>
           <div class="form-row flex space-x-4">

@@ -1,5 +1,5 @@
 import { saveBookList, getBookList } from "./storage";
-import { getUserInput, clearForm } from "./form";
+import { getUserInput, resetForm } from "./form";
 
 // get book list from storage
 const bookList = getBookList() || [];
@@ -31,7 +31,7 @@ function addBook() {
   );
   bookList.push(book);
   saveBookList(bookList);
-  clearForm();
+  resetForm();
 }
 
 // delete book
