@@ -22,6 +22,7 @@ const resetForm = () => {
   pages.classList.remove("border-green-500");
 };
 
+// form validation
 const formEl = document.getElementById("bookForm");
 
 const checkInput = (targetEl) => {
